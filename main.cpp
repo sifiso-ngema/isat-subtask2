@@ -10,7 +10,10 @@ string decimalToBinary(int decimal)
 {
     if (decimal == 0)
         return "0";
-
+    
+if (decimal < 0)
+    return "Invalid: Please enter a positive number";
+    
     string binary = "";
 
     while (decimal > 0)
