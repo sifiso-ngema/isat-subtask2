@@ -43,7 +43,7 @@ int binaryToDecimal(string binaryValue)
     return decimal;
 }
 
-// Function 3: Decimal to Hexadecimal (NEW)
+// Function 3: Decimal to Hexadecimal
 string decimalToHexadecimal(int decimalValue)
 {
     if (decimalValue == 0)
@@ -63,6 +63,29 @@ string decimalToHexadecimal(int decimalValue)
     return hexResult;
 }
 
+// Function 4: Hexadecimal to Decimal (NEW)
+int hexadecimalToDecimal(string hexValue)
+{
+    string hexDigits = "0123456789ABCDEF";
+    int decimal = 0;
+    int power = 0;
+
+    for (int i = hexValue.length() - 1; i >= 0; i--)
+    {
+        char c = toupper(hexValue[i]);
+        int digitValue = hexDigits.find(c);
+
+        int placeValue = 1;
+        for (int p = 0; p < power; p++)
+            placeValue *= 16;
+
+        decimal += digitValue * placeValue;
+        power++;
+    }
+
+    return decimal;
+}
+
 int main()
 {
     int decimalNum;
@@ -75,6 +98,11 @@ int main()
     cout << "Enter a binary number: ";
     cin >> binaryNum;
     cout << "Decimal representation: " << binaryToDecimal(binaryNum) << endl;
+
+    string hexNum;
+    cout << "Enter a hexadecimal number: ";
+    cin >> hexNum;
+    cout << "Decimal representation: " << hexadecimalToDecimal(hexNum) << endl;
 
     return 0;
 }
